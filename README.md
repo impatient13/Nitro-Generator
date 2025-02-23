@@ -1,6 +1,6 @@
 🇫🇷 502 NITRO GENERATOR 🇫🇷
 
-Features:
+🌟Features:
 - Nitro Gen
 - Nitro Checker
 - Valid Nitro Go in valids.txt
