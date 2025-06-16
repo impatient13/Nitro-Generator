@@ -15,21 +15,12 @@ NITRO_NORMAL_URL = "https://discord.gift/"
 NITRO_PROMO_URL = "https://discord.com/billing/partner-promotions/"
 
 def generer_code_nitro(type_nitro):
-    """
-    Génère un code Nitro aléatoire :
-    - 16 caractères pour un Nitro normal
-    - 24 caractères pour un Nitro promo
-    """
     if type_nitro == "normal":
         return NITRO_NORMAL_URL + ''.join(random.choices(string.ascii_letters + string.digits, k=16))
     else: 
         return NITRO_PROMO_URL + ''.join(random.choices(string.ascii_letters + string.digits, k=24))
 
 def verifier_code_nitro(code):
-    """
-    Vérifie si un code Nitro est valide en utilisant l'API de Discord.
-    Si la requête renvoie un code 200, le code est valide. Sinon, il est invalide.
-    """
     url = f"https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true"
     
     try:
@@ -55,16 +46,10 @@ def verifier_code_nitro(code):
         return False
 
 def sauvegarder_code_valide(code):
-    """
-    Enregistre un code Nitro valide dans le fichier 'valids.txt'.
-    """
     with open("valids.txt", "a") as fichier:
         fichier.write(code + "\n")
 
 def envoyer_au_webhook(webhook_url, code):
-    """
-    Envoie le code Nitro valide au webhook Discord.
-    """
     data = {
         "content": f"Code Nitro valide : {code}"
     }
@@ -79,15 +64,6 @@ def envoyer_au_webhook(webhook_url, code):
         print(ROUGE + f"[Erreur Webhook] Problème de connexion au webhook : {e}")
 
 def main():
-    """
-    Fonction principale du script :
-    - Demande à l'utilisateur quel type de Nitro il souhaite générer (normal ou promo).
-    - Demande combien de codes doivent être générés.
-    - Demande un webhook Discord si l'utilisateur souhaite l'utiliser.
-    - Génère et vérifie chaque code.
-    - Affiche le résultat en couleur et enregistre les codes valides.
-    - Envoie les codes valides au webhook si spécifié.
-    """
     
     os.system("cls" if os.name == "nt" else "clear")
 
