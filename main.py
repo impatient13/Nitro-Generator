@@ -12,7 +12,7 @@ VERT = Fore.GREEN
 ROUGE = Fore.RED
 
 NITRO_NORMAL_URL = "https://discord.gift/"
-NITRO_PROMO_URL = "https://discord.com/billing/partner-promotions/"
+NITRO_PROMO_URL = "https://discord.com/billing/promotions/"
 
 def generer_code_nitro(type_nitro):
     if type_nitro == "normal":
